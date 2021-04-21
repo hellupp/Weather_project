@@ -1,3 +1,3 @@
 JS_FINAL_PROJECT
 
-Zasukha, Titarchuk, Sokolova, Dubnitska
+Zasukha, Titarchuk, Sokolova, Dubnytska

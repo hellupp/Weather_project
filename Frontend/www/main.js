@@ -1,34 +1,30 @@
 let autocomplete;
 
-
 let map;
 var globalDate;
 var globalData;
-var globalI;
-var modI;
+var globalIter;
+var modIter;
 
-function getNfillForecast(lat, lng) {
-    var curentDate = new Date();
+function getFillForecast(lat, lng) {
+    var currentDate = new Date();
     console.log(new Date());
-    console.log(curentDate.getHours());
-    globalI = defineIter(curentDate.getHours());
-    console.log(globalI);
+    console.log(currentDate.getHours());
+    globalIter = defineIter(currentDate.getHours());
+    console.log(globalIter);
 
 
 
-
-    $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalI + '&units=metric&appid=eefe7d57de8f5f2e9189fc0ee2bae964', function (data) {
-
-        modI = globalI % 8;
-        if (globalI == 40)
-            modI = 8;
-
+    $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalIter + '&units=metric&appid=eefe7d57de8f5f2e9189fc0ee2bae964', function (data) {
+        modIter = globalIter % 8;
+        if (globalIter === 40)
+            modIter = 8;
 
         globalData = data;
 
 
         var k = 0;
-        if (curentDate.getHours() >= 21)
+        if (currentDate.getHours() >= 21)
             k = 1;
 
         $.getJSON('http://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=minutely,hourly,current&units=metric&appid=eefe7d57de8f5f2e9189fc0ee2bae964', function (dataD) {
@@ -58,7 +54,7 @@ function getNfillForecast(lat, lng) {
         const style = getComputedStyle(x).display;
 
         console.log(style);
-        if (style == "none") {
+        if (style === "none") {
             $(".forecast-table").slideToggle("slow", function () {
                 // Animation complete.
             });
@@ -92,30 +88,30 @@ $(".forecast").click(function () {
 
 
 
-    modI = globalI % 8;
-    if (globalI == 40)
-        modI = 8;
+    modIter = globalIter % 8;
+    if (globalIter === 40)
+        modIter = 8;
 
-    globalI = defineIter(new Date().getHours());
-    if (numberOfDay == 1)
-        for (var i = 0; i < modI; i++) {
-            $("#time" + (8 - modI + i) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
-            $("#time" + (8 - modI + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (8 - modI + i) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
-            $("#time" + (8 - modI + i) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
-            $("#time" + (8 - modI + i) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+    globalIter = defineIter(new Date().getHours());
+    if (numberOfDay === 1)
+        for (var i = 0; i < modIter; i++) {
+            $("#time" + (8 - modIter + i) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
+            $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
+            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (8 - modIter + i) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
+            $("#time" + (8 - modIter + i) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
 
         }
     else {
         $("#time0, #time3, #time6, #time9, #time12, #time15, #time18, #time21").removeClass('d-none');
 
-        for (var i = modI + 8 * (numberOfDay - 2); i < modI + 8 * (numberOfDay - 1); i++) {
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+        for (var i = modIter + 8 * (numberOfDay - 2); i < modIter + 8 * (numberOfDay - 1); i++) {
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
 
         }
@@ -196,6 +192,47 @@ function initMap() {
     });
     var startPoint = new google.maps.LatLng(50.464379, 30.519131);
 
+    const locationButton = document.createElement("button");
+    locationButton.textContent = "Pan to Current Location";
+    locationButton.classList.add("custom-map-control-button");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+    locationButton.addEventListener("click", () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+
+                    homeMarker.setPosition(pos);
+                    homeMarker.setVisible(true);
+                    console.log(pos);
+                    map.setCenter(pos);
+
+                    var ad = document.getElementById('inputAddress');
+                    new google.maps.Geocoder().geocode({
+                        'latLng': new google.maps.LatLng(pos)
+                    }, function(results, status) {
+                        if (status === google.maps.GeocoderStatus.OK) {
+                            console.log(results[0]);
+                            ad.value = results[0].formatted_address;
+                        }
+                    });
+
+                    getFillForecast(pos.lat, pos.lng);
+                },
+                () => {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                }
+            );
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+
+    });
 
 
     autocomplete = new google.maps.places.Autocomplete(
@@ -235,7 +272,7 @@ function initMap() {
             console.log(lat);
             console.log(lng);
 
-            getNfillForecast(lat, lng);
+            getFillForecast(lat, lng);
 
         } else {}
 
@@ -248,13 +285,13 @@ function initMap() {
 
         var coordinates = me.latLng;
         var ad = document.getElementById('inputAddress');
-        geocodeLatLng(coordinates, function (err, adress) {
+        geocodeLatLng(coordinates, function (err, address) {
             if (!err) {
                 var point = coordinates;
                 homeMarker.setPosition(point);
                 homeMarker.setVisible(true);
-                ad.value = adress;
-                console.log(adress);
+                ad.value = address;
+                console.log(address);
 
                 directionsDisplay.setMap(map);
 
@@ -268,10 +305,10 @@ function initMap() {
                 console.log(lat);
                 console.log(lng);
 
-                getNfillForecast(lat, lng);
+                getFillForecast(lat, lng);
 
             } else {
-                console.log("Немаєадреси")
+                console.log("No address");
             }
         })
 

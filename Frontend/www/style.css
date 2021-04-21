@@ -20,6 +20,18 @@ section,
 summary {
   display: block; }
 
+
+
+
+
+
+
+
+
+
+
+
+
 audio,
 canvas,
 video {
@@ -1024,10 +1036,8 @@ form textarea {
  */
 .site-header {
   padding: 50px 0; }
-  .site-header .branding {
-    float: left; }
-    .site-header .branding .logo, .site-header .branding .logo-type {
-      display: inline-block;
+    .site-header .logo, .site-header .logo-type {
+      display: inline;
       vertical-align: middle; }
     .site-header .branding .logo {
       margin-right: 10px; }
@@ -1041,6 +1051,21 @@ form textarea {
       font-size: 0.7142857143em;
       display: block;
       color: #bfc1c8; }
+.site-title{
+  position: absolute;
+  display: inline;
+  width: 311px;
+  height: 62px;
+
+  font-family: Rasa, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+
+  color: #465B6F;
+}
+
 
 .main-navigation {
   float: right; }
@@ -1125,16 +1150,21 @@ form textarea {
    
 }
   .find-location input[type="text"] {
-    width: 100%;
-    padding: 20px 50px 20px 20px;
-    background: #1e202b;
-    color: white; }
+    display: inline;
+    position: absolute;
+    width: 51%;
+    height: 79.98px;
+
+    background: #FFFFFF;
+    border-radius: 20px;}
   .find-location input[type="submit"] {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    bottom: 5px;
-    padding: 0 40px; }
+    width: 12%;
+    height: 79.98px;
+    right: 48%;
+
+    background: #4A868E;
+    border-radius: 20px; }
 
 .forecast-container {
   width: 100%;

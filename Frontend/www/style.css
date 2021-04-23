@@ -66,6 +66,10 @@
   border-radius: 20px;
 }
 
+.img_cond {
+  margin-left: calc(50% - 25px);
+}
+
 .header-clothes-girl, .header-clothes-boy {
   border-radius: 20px;
   font-family: Lucida Handwriting;

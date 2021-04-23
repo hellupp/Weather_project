@@ -20,7 +20,7 @@ function getNfillForecast(lat, lng) {
     $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalI + '&units=metric&appid=eefe7d57de8f5f2e9189fc0ee2bae964', function (data) {
 
         modI = globalI % 8;
-        if (globalI == 40)
+        if (globalI === 40)
             modI = 8;
 
 
@@ -214,7 +214,7 @@ function initMap() {
                     console.log(pos);
                     map.setCenter(pos);
 
-                    var ad = document.getElementById('inputAddress');
+                    var ad = document.getElementById('input-group');
                     new google.maps.Geocoder().geocode({
                         'latLng': new google.maps.LatLng(pos)
                     }, function(results, status) {
@@ -239,7 +239,7 @@ function initMap() {
     });
 
     autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('inputAddress'), {
+        document.getElementById('input-group'), {
             types: ["geocode"],
 
         }
@@ -247,7 +247,7 @@ function initMap() {
     places = new google.maps.places.PlacesService(map);
     autocomplete.addListener("place_changed", onPlaceChanged);
 
-    document.getElementById("inputAddress").addEventListener("change", onPlaceChanged);
+    document.getElementById("input-group").addEventListener("change", onPlaceChanged);
 
     var homeMarker = new google.maps.Marker({
         position: startPoint,
@@ -287,7 +287,7 @@ function initMap() {
     google.maps.event.addListener(map, 'click', function (me) {
 
         var coordinates = me.latLng;
-        var ad = document.getElementById('inputAddress');
+        var ad = document.getElementById('input-group');
         geocodeLatLng(coordinates, function (err, adress) {
             if (!err) {
                 var point = coordinates;
@@ -311,7 +311,7 @@ function initMap() {
                 getNfillForecast(lat, lng);
 
             } else {
-                console.log("Немаєадреси")
+                console.log("Немає адреси")
             }
         })
 

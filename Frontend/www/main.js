@@ -7,6 +7,43 @@ var globalData;
 var globalI;
 var modI;
 
+function currentPos() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+
+                homeMarker.setPosition(pos);
+                homeMarker.setVisible(true);
+                console.log(pos);
+                map.setCenter(pos);
+
+                var cur = document.getElementById('currentPlace');
+                new google.maps.Geocoder().geocode({
+                    'latLng': new google.maps.LatLng(pos)
+                }, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        console.log(results[0]);
+                        cur.innerText = results[0].formatted_address;
+                    }
+                });
+
+            },
+            () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+            }
+        );
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+}
+
+
+
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: {
@@ -16,6 +53,9 @@ function initMap() {
         zoom: 15,
     });
     var startPoint = new google.maps.LatLng(50.464379, 30.519131);
+    $(function(){
+        currentPos();
+    });
 
     const locationButton = document.createElement("button");
     locationButton.textContent = "Pan to Current Location";
@@ -36,12 +76,14 @@ function initMap() {
                     map.setCenter(pos);
 
                     var ad = document.getElementById('input_address');
+                    var cur = document.getElementById('currentPlace');
                     new google.maps.Geocoder().geocode({
                         'latLng': new google.maps.LatLng(pos)
                     }, function(results, status) {
                         if (status === google.maps.GeocoderStatus.OK) {
                             console.log(results[0]);
                             ad.value = results[0].formatted_address;
+                            cur.innerText = results[0].formatted_address;
                         }
                     });
 
@@ -167,3 +209,7 @@ function initMap() {
         });
     }
 }
+
+
+
+

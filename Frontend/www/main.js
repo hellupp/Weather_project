@@ -7,7 +7,6 @@ var globalData;
 var globalIter;
 var modIter;
 
-
 function fillForecast(lat, lng) {
     var curentDate = new Date();
     console.log(new Date());

@@ -13,18 +13,23 @@
 }
 
 .celsii, .farengheight {
+  background: #a3cdd3;
   width: 50px;
   height: 50px;
   color: white;
   border-radius: 20px;
+  /*transition: background 9999999s;*/
 }
 
-.celsii {
+.celsii:hover, .farengheight:hover{
+  background: #6fb0ba;
+}
+.celsii:active, .farengheight:active, .celsii:focus, .farengheight:focus {
   background: #4A868E;
+  /*transition: background 0s;*/
 }
-
-.farengheight {
-  background: #a3cdd3;
+.celsii:checked, .farengheight:checked {
+  background: #4A868E;
 }
 
 .find-background {

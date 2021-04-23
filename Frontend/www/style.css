@@ -74,6 +74,9 @@
 .img_cond {
   margin-left: calc(50% - 25px);
 }
+#sign1_img_cond {
+  margin-left: 0;
+}
 
 .header-clothes-girl, .header-clothes-boy {
   border-radius: 20px;

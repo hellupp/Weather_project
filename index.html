@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BestWeather</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootsrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="header">
+    <div class="upper-header shadow-lg rounded-bottom align-middle"
+         style="height: 120px">
+        <div class="row align-middle" style="height: 100%; width: 100%">
+            <div class="left col-xl-1 p-0"></div>
+            <div class="emblem col-xl-5 p-0 my-auto">
+                <div class="company-name">
+                    <img class="mx-2 icon-image" src="img/weatherIcon.png" width="80" height="80" alt="lorem">
+                    <b class="name align-middle">BestForWeather</b>
+                </div>
+            </div>
+            <div class="research col-xl-5 p-0 my-auto">
+                <div class="row">
+                    <div class="try col-9 text-center">
+                        <div class="input-group input-group-lg d-flex my-auto p-0" id="input-group"
+                             style="height:50px">
+                            <input type="text" class="form-control border-0 w-75 d-inline-block"
+                                   placeholder="Find your location..." aria-label="Sizing example input"
+                                   aria-describedby="inputGroup-sizing-lg" id="input_address">
+                            <div class="find-background d-inline-block w-25">
+                                <button class="input-group-text rounded-right border-0 fw-bold fs-4 text-center"
+                                        id="inputGroup-sizing-lg"
+                                        style="height:100%; width:100%">Find
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="degree-buttons d-inline-block my-auto col-3 p-0">
+                        <button class="celsii fw-bold border-0 shadow">°C</button>
+                        <button class="farengheight fw-bold border-0 shadow">°F</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right col-xl-1 p-0"></div>
+        </div>
+    </div>
+    <div class="lower-header shadow rounded-bottom" style="width: 100%; height: 40px">
+        <div class="row" style="width: 100%">
+            <div class="left-part col-1 p-0"></div>
+            <div class="curn-loc-info col-10 p-0 mx-2">
+                <div class="cur-loc fw-bold d-inline-block my-2">
+                    Current location:
+                </div>
+                <div class="place fw-bold d-inline-block my-2" id="currentPlace">
+
+                </div>
+            </div>
+            <div class="right-part col-1 p-0"></div>
+        </div>
+    </div>
+</div>
+
+<div class="main-body mt-5">
+    <div class="row info mb-5" style="width: 100%">
+        <div class="forecast col-7 p-0">
+            <div class="today mx-auto row mb-3 shadow" id="today-forecast" style="width:90%; height:150px">
+                <div class="date col m-auto p-0">
+                    <div class="hello text-center">
+                        <b class="fs-2">Today</b>
+                        <br>
+                        <div class="Date text-center fs-5"></div>
+                        <div class="city"></div>
+                    </div>
+                </div>
+                <div class="sign1 col p-0 m-auto text-center">
+                    <img class="img_cond" src="img/sun.svg" alt="Sun">
+                </div>
+                <div class="wind col p-0 m-auto text-center">
+                    <div class="wind"><img src="img/wind.svg" alt="wind">
+                    </div>
+                </div>
+                <div class="temp col p-0 m-auto text-center fs-1"></div>
+            </div>
+            <div class="by-hours d-flex justify-content-between mx-auto" style="width: 90%">
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time0" style="height: 220px; background-color: #4a868e;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">00:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time3" style="height: 220px; background-color: #7badb4;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">03:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time6" style="height: 220px; background-color: #a3cdd3;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">06:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time9" style="height: 220px; background-color: #caedf2;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">09:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time12" style="height: 220px; background-color: #a3cdd3;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">12:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time15" style="height: 220px; background-color: #7badb4;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">15:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time18" style="height: 220px; background-color: #4a868e;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">18:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+                <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
+                     id="time21" style="height: 220px; background-color: #4a868e;">
+                    <div class="mx-auto fs-5 my-auto fw-bold">21:00</div>
+                    <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="temp mx-auto fs-5 my-auto"></div>
+                </div>
+            </div>
+        </div>
+        <div class="map col-5 p-0">
+            <div id="map" class="mx-auto" style="width: 90%"></div>
+        </div>
+    </div>
+
+    <div class="clothes-area row" style="width: 100%">
+        <div class="girls-part col-6">
+            <div class="block">
+                <div class="header-clothes-girl mx-auto fw-bold fs-2 mb-2 d-flex justify-content-center align-items-center"
+                     style="width: 80%; height: 80px">For her
+                </div>
+                <div class="clothes-box-girl mx-auto d-flex flex-wrap justify-content-between" style="width: 80%">
+                    <img class="item_cloth" src="img/hat%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img class="item_cloth" src="img/jeans%20M1.1.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img class="item_cloth" src="img/shirt%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img class="item_cloth" src="img/shoes%20M1.3.jpg" class="mb-2 rounded-3" style="width:150px;">
+                </div>
+            </div>
+        </div>
+        <div class="boys-part col-6">
+            <div class="block">
+                <div class="header-clothes-boy mx-auto fw-bold fs-2 mb-2 d-flex justify-content-center align-items-center"
+                     style="width: 80%; height: 80px">For him
+                </div>
+                <div class="clothes-box-boy mx-auto d-flex flex-wrap justify-content-between" style="width: 80%">
+                    <img class="item_cloth" src="img/hat%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img class="item_cloth" src="img/jeans%20M1.1.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img class="item_cloth" src="img/shirt%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img class="item_cloth" src="img/shoes%20M1.3.jpg" class="mb-2 rounded-3" style="width:150px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer mt-5 rounded-top shadow fs-4" style="width: 100%; height: 200px">
+    Contact us if you have any questions
+</div>
+
+
+<!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+
+<!--Own JavaScript -->
+<script type="text/javascript" src="main.js"></script>
+
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl5JjMaP9GYQLwTntLtvO3AolGESMWYtw&libraries=places&callback=initMap">
+</script>
+
+
+</body>
+</html>

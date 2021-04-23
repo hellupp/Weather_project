@@ -5,7 +5,7 @@ let map;
 var globalDate;
 var globalData;
 var globalI;
-var modI;
+var modIter;
 
 function getNfillForecast(lat, lng) {
     var curentDate = new Date();
@@ -19,9 +19,9 @@ function getNfillForecast(lat, lng) {
 
     $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalI + '&units=metric&appid=f1c4ea79129faeebfbac6455394d7b12', function (data) {
 
-        modI = globalI % 8;
+        modIter = globalI % 8;
         if (globalI == 40)
-            modI = 8;
+            modIter = 8;
 
 
         globalData = data;
@@ -92,30 +92,30 @@ $(".forecast").click(function () {
 
 
 
-    modI = globalI % 8;
+    modIter = globalI % 8;
     if (globalI == 40)
-        modI = 8;
+        modIter = 8;
 
     globalI = defineIter(new Date().getHours());
     if (numberOfDay == 1)
-        for (var i = 0; i < modI; i++) {
-            $("#time" + (8 - modI + i) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
-            $("#time" + (8 - modI + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (8 - modI + i) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
-            $("#time" + (8 - modI + i) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
-            $("#time" + (8 - modI + i) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+        for (var i = 0; i < modIter; i++) {
+            $("#time" + (8 - modIter + i) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
+            $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
+            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (8 - modIter + i) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
+            $("#time" + (8 - modIter + i) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
 
         }
     else {
         $("#time0, #time3, #time6, #time9, #time12, #time15, #time18, #time21").removeClass('d-none');
 
-        for (var i = modI + 8 * (numberOfDay - 2); i < modI + 8 * (numberOfDay - 1); i++) {
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
-            $("#time" + (i - modI - 8 * (numberOfDay - 2)) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+        for (var i = modIter + 8 * (numberOfDay - 2); i < modIter + 8 * (numberOfDay - 1); i++) {
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".temp").html("<img  src='images/icons/temp.svg' width=25>" + Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".description").html((globalData["list"][i]["weather"]["0"]["description"]));
+            $("#time" + (i - modIter - 8 * (numberOfDay - 2)) * 3).find(".condition").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
 
         }

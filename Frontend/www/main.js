@@ -9,6 +9,7 @@ var modIter;
 
 $('.img_cond').hide();
 $('.wind').hide();
+$('.item_cloth').hide();
 
 
 function fillForecast(lat, lng) {
@@ -45,6 +46,8 @@ function fillForecast(lat, lng) {
             // $("#day" + (i + 1)).find(".pop").html('<img src="images/icon-umberella.png" alt="">' + Math.round(100 * (dataD["daily"][i + k]["pop"])) + "%");
             $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + (dataD["daily"][0]["wind_speed"]) + "m/s");
             $('.wind').show();
+
+            suggestOutlook(12);
             console.log(dayOfWeek + numberOfDate + Month);
             console.log("Date: " + date.toString());
         });
@@ -325,4 +328,31 @@ function defineIter(hours) {
 
 
 
+
+
+    
+
+
+function suggestOutlook(degree) {
+    if (degree <= -10){
+
+    } if (degree <= -5 && degree > -10){
+        
+    } if (degree <= 0 && degree > -5){
+        
+    } if (degree <= 5 && degree > 0){
+        
+    } if (degree <= 10 && degree > 5){
+        
+    } if (degree <= 15 && degree > 10){
+        $('.item_cloth').show();
+        $(".clothes-box-boy").find(".item_cloth").attr("src", "img/hat M1.2.jpg");
+    } if (degree <= 20 && degree > 15){
+        
+    } if (degree <= 25 && degree > 20){
+        
+    } else {
+
+    }
+}
 

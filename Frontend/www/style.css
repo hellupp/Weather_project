@@ -71,6 +71,10 @@
   border-radius: 20px;
 }
 
+.img_cond {
+  margin-left: calc(50% - 25px);
+}
+
 .header-clothes-girl, .header-clothes-boy {
   border-radius: 20px;
   font-family: Lucida Handwriting;
@@ -97,6 +101,7 @@
   height: 400px;
   width: 600px;
   margin-left: 40px;
+  border-radius: 20px;
 }
 
 .custom-map-control-button {

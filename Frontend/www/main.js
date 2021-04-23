@@ -53,7 +53,7 @@ function fillForecast(lat, lng) {
         for (var i = 0; i < modIter; i++) {
             $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
             // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="images/icon-wind.png" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
             $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
 
@@ -62,40 +62,7 @@ function fillForecast(lat, lng) {
 }
 
 
-    // function currentPos() {
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition(
-    //             (position) => {
-    //                 const pos = {
-    //                     lat: position.coords.latitude,
-    //                     lng: position.coords.longitude,
-    //                 };
-    //
-    //                 homeMarker.setPosition(pos);
-    //                 homeMarker.setVisible(true);
-    //                 console.log(pos);
-    //                 map.setCenter(pos);
-    //
-    //                 var cur = document.getElementById('currentPlace');
-    //                 new google.maps.Geocoder().geocode({
-    //                     'latLng': new google.maps.LatLng(pos)
-    //                 }, function (results, status) {
-    //                     if (status === google.maps.GeocoderStatus.OK) {
-    //                         console.log(results[0]);
-    //                         cur.innerText = results[0].formatted_address;
-    //                     }
-    //                 });
-    //
-    //             },
-    //             () => {
-    //                 handleLocationError(true, infoWindow, map.getCenter());
-    //             }
-    //         );
-    //     } else {
-    //         // Browser doesn't support Geolocation
-    //         handleLocationError(false, infoWindow, map.getCenter());
-    //     }
-    // }
+
 
 function defineIter(hours) {
     if (hours < 3) {
@@ -163,6 +130,43 @@ function defineIter(hours) {
             zoom: 15,
         });
         var startPoint = new google.maps.LatLng(50.464379, 30.519131);
+
+
+        window.onload = function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+
+                        homeMarker.setPosition(pos);
+                        homeMarker.setVisible(true);
+                        console.log(pos);
+                        map.setCenter(pos);
+
+                        var cur = document.getElementById('currentPlace');
+                        new google.maps.Geocoder().geocode({
+                            'latLng': new google.maps.LatLng(pos)
+                        }, function (results, status) {
+                            if (status === google.maps.GeocoderStatus.OK) {
+                                console.log(results[0]);
+                                cur.innerText = results[0].formatted_address;
+                            }
+                        });
+                        fillForecast(pos.lat, pos.lng);
+
+                    },
+                    () => {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    }
+                );
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
 
 
         const locationButton = document.createElement("button");

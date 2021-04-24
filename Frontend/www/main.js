@@ -43,7 +43,7 @@ function fillForecast(lat, lng) {
             $("#today-forecast").find(".temp").html(Math.round(dataD["daily"][0]["temp"]["day"]) + "<sup>o</sup>C");
             $("#today-forecast").find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (dataD["daily"][0]["weather"][0]["icon"]) + '@2x.png');
             $('.img_cond').show();
-            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' +(dataD["daily"][0]["wind_speed"]) + "m/s");
+            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + (dataD["daily"][0]["wind_speed"]) + "m/s");
             $('.wind').show();
 
             suggestOutlook(12);
@@ -346,7 +346,8 @@ function suggestOutlook(degree) {
 
     } if (degree <= 15 && degree > 10){
         $('.item_cloth').show();
-        $(".clothes-box-boy").find(".item_cloth").attr("src", "img/hat M1.2.jpg");
+        $(".clothes-box-boy").find("#item_cloth_hat_M").attr("src", "img/hat M1.2.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "img/shirt M1.2.jpg");
     } if (degree <= 20 && degree > 15){
 
     } if (degree <= 25 && degree > 20){
@@ -355,3 +356,4 @@ function suggestOutlook(degree) {
 
     }
 }
+

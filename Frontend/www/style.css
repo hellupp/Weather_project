@@ -31,6 +31,10 @@ body {
 .farengheight {
     background: #a3cdd3;
 }
+.celsii:active, .farengheight:active, .celsii:focus, .farengheight:focus{
+    background: #4A868E;
+    /*transition: background 0s;*/
+}
 
 .find-background {
     background-color: white;

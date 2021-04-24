@@ -12,6 +12,44 @@ $('.wind').hide();
 $('.item_cloth').hide();
 
 
+// var yourbuttons = document.getElementsByClassName('degree-buttons');
+// for (var i = yourbuttons.length - 1; i >= 0; i--) {
+//     var currentbtn;
+//     yourbuttons[i].onclick=function(){
+//         if(currentbtn){
+//             currentbtn.classList.remove("active");
+//         }
+//         this.classList.add("active");
+//         currentbtn=this;
+//     }
+// };
+
+$("#farengheight").on('click', function(e) {
+    $("#celsii").removeClass("active");
+    $(this).addClass('active');
+    $(this).css({
+        "background": "#4A868E",
+        "color": "white"
+    });
+    $("#celsii").css({
+        "background": "#a3cdd3",
+        "color": "white"
+    });
+})
+$("#celsii").on('click', function(e) {
+    $("#farengheight").removeClass("active");
+    $(this).addClass('active');
+    $(this).css({
+        "background": "#4A868E",
+        "color": "white"
+    });
+    $("#farengheight").css({
+        "background": "#a3cdd3",
+        "color": "white"
+    });
+})
+
+
 function fillForecast(lat, lng) {
     var curentDate = new Date();
     console.log(new Date());
@@ -40,7 +78,7 @@ function fillForecast(lat, lng) {
             var Month = tempSplit[1];
             $("#today-forecast").find(".Date").html(numberOfDate + " " + Month);
             $("#today-forecast").find(".city").html(data["city"]["name"]);
-            $("#today-forecast").find(".temp").html(Math.round(dataD["daily"][0]["temp"]["day"]) + "<sup>o</sup>C");
+            $("#today-forecast").find(".temp").html(Math.round(dataD["daily"][0]["temp"]["day"]) + "°C");
             $("#today-forecast").find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (dataD["daily"][0]["weather"][0]["icon"]) + '@2x.png');
             $('.img_cond').show();
             $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' + (dataD["daily"][0]["wind_speed"]) + "m/s");
@@ -59,7 +97,7 @@ function fillForecast(lat, lng) {
         globalIter = defineIter(new Date().getHours());
 
         for (var i = 0; i < modIter; i++) {
-            $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "<sup>o</sup>C");
+            $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°C");
             // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
             $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
             $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');

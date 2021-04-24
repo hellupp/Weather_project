@@ -46,7 +46,8 @@ function fillForecast(lat, lng) {
             $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' + (dataD["daily"][0]["wind_speed"]) + "m/s");
             $('.wind').show();
 
-            suggestOutlook(12);
+            suggestOutlook(Math.round(dataD["daily"][0]["temp"]["day"]));
+            
             console.log(dayOfWeek + numberOfDate + Month);
             console.log("Date: " + date.toString());
         });
@@ -328,31 +329,154 @@ function initMap() {
 
 
 function suggestOutlook(degree) {
-    if (degree <= -10) {
+    var dress = Math.floor(Math.random() * 5);
+    var t_shirt = Math.floor(Math.random() * 5);
+    var jeans = Math.floor(Math.random() * 3);
+    var trousers = Math.floor(Math.random() * 4);
+    var shorts = Math.floor(Math.random() * 4);
+    var hudi = Math.floor(Math.random() * 3);
 
+    if (degree <= -10) {
+        $('.item_cloth').show();
+
+        $(".clothes-box-boy").find("#item_cloth_hat_M").attr("src", "clothes/Accessories/hat M1.3.jpg");
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/winter M1.1.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/sweatshirt M1.1.jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/trousers M1."+trousers+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.4.jpg");
+
+        $(".clothes-box-girl").find("#item_cloth_hat_F").attr("src", "clothes/Accessories/hat F1.3.jpg");
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/winter F1.1.jpg");
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/hudi F1."+hudi+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/trousers F1."+trousers+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.6.jpg");
+     
     }
     if (degree <= -5 && degree > -10) {
+        $('.item_cloth').show();
+
+        $(".clothes-box-boy").find("#item_cloth_hat_M").attr("src", "clothes/Accessories/hat M1.3.jpg");
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/winter M1.2.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/sweatshirt M1.2.jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/jeans M1."+jeans+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.4.jpg");
+
+        $(".clothes-box-girl").find("#item_cloth_hat_F").attr("src", "clothes/Accessories/hat F1.3.jpg");
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/winter F1.2.jpg");
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/hudi F1."+hudi+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/trousers F1."+trousers+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.6.jpg");
 
     }
     if (degree <= 0 && degree > -5) {
+        $('.item_cloth').show();
+
+        $(".clothes-box-boy").find("#item_cloth_hat_M").attr("src", "clothes/Accessories/hat M1.3.jpg");
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/winter M1.3.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/hudi M1."+hudi+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/jeans M1."+jeans+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.4.jpg");
+
+        $(".clothes-box-girl").find("#item_cloth_hat_F").attr("src", "clothes/Accessories/hat F1.3.jpg");
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/winter F1.3.jpg");
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/hudi F1."+hudi+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/trousers F1."+trousers+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.6.jpg");
 
     }
     if (degree <= 5 && degree > 0) {
+        $('.item_cloth').show();
 
+        $("#item_cloth_hat_M").hide();
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/winter M1.3.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/longsleave M1.3.jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/trousers M1."+trousers+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.4.jpg");
+
+        $("#item_cloth_hat_F").hide();
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/winter F1.3.jpg");
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/sweater F1.3.jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/jeans F1."+jeans+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.3.jpg");
+    
     }
     if (degree <= 10 && degree > 5) {
+        $('.item_cloth').show();
+
+        $("#item_cloth_hat_M").hide();
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/motojacket M.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/longsleave M1.3.jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/trousers M1."+trousers+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.1.jpg");
+
+        $("#item_cloth_hat_F").hide();
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/motojacket F.jpg");
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/sweater F1.1.jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/jeans F1."+jeans+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.1.jpg");
 
     }
     if (degree <= 15 && degree > 10) {
         $('.item_cloth').show();
-        $(".clothes-box-boy").find(".item_cloth").attr("src", "img/hat M1.2.jpg");
+
+        $("#item_cloth_hat_M").hide();
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/zip M1.2.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/shirt M1.2.jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/trousers M1."+trousers+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.1.jpg");
+
+        $("#item_cloth_hat_F").hide();
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/jacket F.jpg");
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/bloose F1.3.jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/shirts F1."+shorts+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.2.jpg");
+        
     }
     if (degree <= 20 && degree > 15) {
+        $('.item_cloth').show();
 
+        $("#item_cloth_hat_M").hide();
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/bomber M.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/t-shirt M1."+t_shirt+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/jeans M1."+jeans+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.2.jpg");
+
+        $(".clothes-box-girl").find("#item_cloth_hat_F").attr("src", "clothes/Accessories/hat F1.2.jpg");
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/bomber F.jpg");
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/t-shirt F1."+t_shirt+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/shirts F1."+shorts+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.2.jpg");
     }
     if (degree <= 25 && degree > 20) {
+        $('.item_cloth').show();
 
-    } else {
+        $(".clothes-box-boy").find("#item_cloth_hat_M").attr("src", "clothes/Accessories/hat M1.1.jpg");
+        $(".clothes-box-boy").find("#item_cloth_outerwear_M").attr("src", "clothes/Outerwear/jeanscoat M.jpg");
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/t-shirt M1."+t_shirt+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/shirts M1."+shorts+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.3.jpg");
+
+        $(".clothes-box-girl").find("#item_cloth_hat_F").attr("src", "clothes/Accessories/hat F1.1.jpg");
+        $(".clothes-box-girl").find("#item_cloth_outerwear_F").attr("src", "clothes/Outerwear/jeanscoat F.jpg")
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/t-shirt F1."+t_shirt+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_bottom_F").attr("src", "clothes/Trousers/shirts F1."+shorts+".jpg");
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.4.jpg");
+     
+    } if (degree > 25) {
+
+        $('.item_cloth').show();
+
+        $(".clothes-box-boy").find("#item_cloth_hat_M").attr("src", "clothes/Accessories/hat M1.2.jpg");
+        $("#item_cloth_outerwear_M").hide();
+        $(".clothes-box-boy").find("#item_cloth_top_M").attr("src", "clothes/Undercoats/t-shirt M1."+t_shirt+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_bottom_M").attr("src", "clothes/Trousers/shirts M1."+shorts+".jpg");
+        $(".clothes-box-boy").find("#item_cloth_shoes_M").attr("src", "clothes/Shoes/shoes M1.3.jpg");
+
+        $(".clothes-box-girl").find("#item_cloth_hat_F").attr("src", "clothes/Accessories/hat F1.1.jpg");
+        $("#item_cloth_outerwear_F").hide();
+        $(".clothes-box-girl").find("#item_cloth_top_F").attr("src", "clothes/Undercoats/dress F1."+dress+".jpg");
+        $("#item_cloth_bottom_F").hide();
+        $(".clothes-box-girl").find("#item_cloth_shoes_F").attr("src", "clothes/Shoes/shoes F1.5.jpg");
 
     }
 }

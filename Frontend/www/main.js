@@ -7,6 +7,10 @@ var globalData;
 var globalIter;
 var modIter;
 
+var celsii = true;
+var latD;
+var lngD;
+
 $('.img_cond').hide();
 $('.wind').hide();
 $('.item_cloth').hide();
@@ -35,6 +39,8 @@ $("#farengheight").on('click', function(e) {
         "background": "#a3cdd3",
         "color": "white"
     });
+    celsii = false;
+    fillForecastForFarengheight(latD, lngD);
 })
 $("#celsii").on('click', function(e) {
     $("#farengheight").removeClass("active");
@@ -47,10 +53,12 @@ $("#celsii").on('click', function(e) {
         "background": "#a3cdd3",
         "color": "white"
     });
+    celsii = true;
+    fillForecastForCelsii(latD, lngD);
 })
 
 
-function fillForecast(lat, lng) {
+function fillForecastForCelsii(lat, lng) {
     var curentDate = new Date();
     console.log(new Date());
     console.log(curentDate.getHours());
@@ -98,6 +106,63 @@ function fillForecast(lat, lng) {
 
         for (var i = 0; i < modIter; i++) {
             $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°C");
+            // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
+            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+            console.log("This: " + i)
+        }
+    });
+}
+
+
+function fillForecastForFarengheight(lat, lng) {
+    var curentDate = new Date();
+    console.log(new Date());
+    console.log(curentDate.getHours());
+    globalIter = defineIter(curentDate.getHours());
+    console.log(globalIter);
+
+    $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalIter + '&units=imperial&appid=' + apiKey, function (data) {
+
+        modIter = globalIter % 8;
+        if (globalIter === 40)
+            modIter = 8;
+
+        globalData = data;
+
+        var k = 0;
+        if (curentDate.getHours() >= 21)
+            k = 1;
+
+        $.getJSON('http://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=minutely,hourly,current&units=imperial&appid=' + apiKey, function (dataD) {
+            var date = new Date((dataD["daily"][0]["dt"]) * 1000);
+
+            const tempSplit = date.toString().split(" ", 4);
+            var dayOfWeek = tempSplit[0];
+            var numberOfDate = tempSplit[2];
+            var Month = tempSplit[1];
+            $("#today-forecast").find(".Date").html(numberOfDate + " " + Month);
+            $("#today-forecast").find(".city").html(data["city"]["name"]);
+            $("#today-forecast").find(".temp").html(Math.round(dataD["daily"][0]["temp"]["day"]) + "°F");
+            $("#today-forecast").find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (dataD["daily"][0]["weather"][0]["icon"]) + '@2x.png');
+            $('.img_cond').show();
+            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' + (dataD["daily"][0]["wind_speed"]) + "m/s");
+            $('.wind').show();
+
+            suggestOutlook(Math.round(dataD["daily"][0]["temp"]["day"]));
+
+            console.log(dayOfWeek + numberOfDate + Month);
+            console.log("Date: " + date.toString());
+        });
+
+        modIter = globalIter % 8;
+        if (globalIter == 40)
+            modIter = 8;
+
+        globalIter = defineIter(new Date().getHours());
+
+        for (var i = 0; i < modIter; i++) {
+            $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°F");
             // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
             $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
             $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
@@ -198,8 +263,17 @@ function initMap() {
                             cur.innerText = results[0].formatted_address;
                         }
                     });
-                    fillForecast(pos.lat, pos.lng);
+                    if(celsii === true){
+                        latD = pos.lat;
+                        lngD = pos.lat;
+                        fillForecastForCelsii(pos.lat, pos.lng);
+                    }
 
+                    else{
+                        latD = pos.lat;
+                        lngD = pos.lat;
+                        fillForecastForFarengheight(pos.lat, pos.lng);
+                    }
                 },
                 () => {
                     handleLocationError(true, infoWindow, map.getCenter());
@@ -242,7 +316,17 @@ function initMap() {
                         }
                     });
 
-                    fillForecast(pos.lat, pos.lng);
+                    if(celsii === true){
+                        latD = pos.lat;
+                        lngD = pos.lat;
+                        fillForecastForCelsii(pos.lat, pos.lng);
+                    }
+
+                    else{
+                        latD = pos.lat;
+                        lngD = pos.lat;
+                        fillForecastForFarengheight(pos.lat, pos.lng);
+                    }
                 },
                 () => {
                     handleLocationError(true, infoWindow, map.getCenter());
@@ -293,7 +377,17 @@ function initMap() {
             console.log(lat);
             console.log(lng);
 
-            fillForecast(lat, lng);
+            if(celsii === true){
+                latD = lat;
+                lngD = lng;
+                fillForecastForCelsii(lat, lng);
+            }
+
+            else{
+                latD = lat;
+                lngD = lat;
+                fillForecastForFarengheight(lat, lng);
+            }
 
         } else {
         }
@@ -327,7 +421,17 @@ function initMap() {
                 console.log(lat);
                 console.log(lng);
 
-                fillForecast(lat, lng);
+                if(celsii === true){
+                    latD = lat;
+                    lngD = lng;
+                    fillForecastForCelsii(lat, lng);
+                }
+
+                else{
+                    latD = lat;
+                    lngD = lat;
+                    fillForecastForFarengheight(lat, lng);
+                }
 
             } else {
                 console.log("Немає адреси")

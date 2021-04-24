@@ -43,7 +43,7 @@ function fillForecast(lat, lng) {
             $("#today-forecast").find(".temp").html(Math.round(dataD["daily"][0]["temp"]["day"]) + "<sup>o</sup>C");
             $("#today-forecast").find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (dataD["daily"][0]["weather"][0]["icon"]) + '@2x.png');
             $('.img_cond').show();
-            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' +(dataD["daily"][0]["wind_speed"]) + "m/s");
+            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' +(dataD["daily"][0]["wind_speed"]) + "m/s");
             $('.wind').show();
 
             suggestOutlook(12);

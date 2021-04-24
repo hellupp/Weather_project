@@ -1,158 +1,159 @@
 body {
-  min-width: 485px;
+    min-width: 485px;
 }
 
 .upper-header, .lower-header {
-  background-color: #CEEFF3;
-  box-sizing: border-box;
+    background-color: #CEEFF3;
+    box-sizing: border-box;
 }
 
 .name {
-  font-family: Rasa;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 36px;
-  line-height: 58px;
+    font-family: Rasa;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 58px;
 
-  color: #465B6F;
+    color: #465B6F;
 }
 
 .celsii, .farengheight {
-  width: 50px;
-  height: 50px;
-  color: white;
-  border-radius: 20px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    border-radius: 20px;
 }
 
 .celsii {
-  background: #4A868E;
+    background: #4A868E;
 }
 
 .farengheight {
-  background: #a3cdd3;
+    background: #a3cdd3;
 }
 
 .find-background {
-  background-color: white;
-  border-bottom-right-radius: 50%;
-  border-top-right-radius: 50%;
+    background-color: white;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
 }
 
 .form-control {
-  border-bottom-left-radius: 50%;
-  border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
 }
 
-#inputGroup-sizing-lg{
-  border-radius: 20px;
-  color:white;
-  background: #4A868E;
-  justify-content: center;
+#inputGroup-sizing-lg {
+    border-radius: 20px;
+    color: white;
+    background: #4A868E;
+    justify-content: center;
 }
 
 .cur-loc {
-  color: #465B6F;;
+    color: #465B6F;;
 }
 
 .place {
-  color:white;
+    color: white;
 }
 
 #today-forecast {
-  background-color: #CEEFF3;
-  border-radius: 20px;
+    background-color: #CEEFF3;
+    border-radius: 20px;
 }
 
-.hello{
-  color: #465B6F;
+.hello {
+    color: #465B6F;
 }
-
 
 
 .one-weather-item {
-  border-radius: 20px;
+    border-radius: 20px;
 }
 
 .img_cond {
-  margin-left: calc(50% - 25px);
+    margin-left: calc(50% - 25px);
 }
+
 #sign1_img_cond {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .header-clothes-girl, .header-clothes-boy {
-  border-radius: 20px;
-  font-family: Lucida Handwriting;
+    border-radius: 20px;
+    font-family: Lucida Handwriting;
 }
 
 .header-clothes-girl {
-  background-color: #CEEFF3;
-  color:#4a868e;
+    background-color: #CEEFF3;
+    color: #4a868e;
 }
 
 .header-clothes-boy {
-  background-color: #4a868e;
-  color: #CEEFF3;
-  border-color: #4A868E;
+    background-color: #4a868e;
+    color: #CEEFF3;
+    border-color: #4A868E;
 }
 
 .footer {
-  background-color: #4A868E;
-  color: #CEEFF3;
+    background-color: #4A868E;
+    color: #CEEFF3;
 }
 
 #map {
-  box-shadow: #d9d7d7;
-  height: 400px;
-  width: 600px;
-  margin-left: 40px;
-  border-radius: 20px;
+    box-shadow: #d9d7d7;
+    height: 400px;
+    width: 600px;
+    margin-left: 40px;
+    border-radius: 20px;
 }
 
 .custom-map-control-button {
-  appearance: button;
-  background-color: #fff;
-  border: 0;
-  border-radius: 2px;
-  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  margin: 10px 10px 10px 40px;
-  padding: 0 0.5em;
-  height: 7%;
-  font: 400 18px Roboto, Arial, sans-serif;
-  overflow: hidden;
+    appearance: button;
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin: 10px 10px 10px 40px;
+    padding: 0 0.5em;
+    height: 7%;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
 }
+
 .custom-map-control-button:hover {
-  background: #ebebeb;
+    background: #ebebeb;
 }
 
 #currentPlace {
-  text-shadow: 1px 1px 2px gray;
+    text-shadow: 1px 1px 2px gray;
 }
 
-@media screen and (min-width: 0px){
-  #currentPlace {
-    width: 250px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+@media screen and (min-width: 0px) {
+    #currentPlace {
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
-@media screen and (min-width: 620px){
-  #currentPlace {
-    width: 400px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+@media screen and (min-width: 620px) {
+    #currentPlace {
+        width: 400px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
-@media screen and (min-width: 820px){
-  #currentPlace {
-    width: 600px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+@media screen and (min-width: 820px) {
+    #currentPlace {
+        width: 600px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

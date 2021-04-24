@@ -43,7 +43,7 @@ function fillForecast(lat, lng) {
             $("#today-forecast").find(".temp").html(Math.round(dataD["daily"][0]["temp"]["day"]) + "<sup>o</sup>C");
             $("#today-forecast").find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (dataD["daily"][0]["weather"][0]["icon"]) + '@2x.png');
             $('.img_cond').show();
-            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' +(dataD["daily"][0]["wind_speed"]) + "m/s");
+            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' + (dataD["daily"][0]["wind_speed"]) + "m/s");
             $('.wind').show();
 
             suggestOutlook(12);
@@ -136,7 +136,7 @@ function initMap() {
     var startPoint = new google.maps.LatLng(50.464379, 30.519131);
 
 
-    window.onload = function() {
+    window.onload = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -327,29 +327,30 @@ function initMap() {
 }
 
 
-
-
-
-
-
-
 function suggestOutlook(degree) {
-    if (degree <= -10){
+    if (degree <= -10) {
 
-    } if (degree <= -5 && degree > -10){
+    }
+    if (degree <= -5 && degree > -10) {
 
-    } if (degree <= 0 && degree > -5){
+    }
+    if (degree <= 0 && degree > -5) {
 
-    } if (degree <= 5 && degree > 0){
+    }
+    if (degree <= 5 && degree > 0) {
 
-    } if (degree <= 10 && degree > 5){
+    }
+    if (degree <= 10 && degree > 5) {
 
-    } if (degree <= 15 && degree > 10){
+    }
+    if (degree <= 15 && degree > 10) {
         $('.item_cloth').show();
         $(".clothes-box-boy").find(".item_cloth").attr("src", "img/hat M1.2.jpg");
-    } if (degree <= 20 && degree > 15){
+    }
+    if (degree <= 20 && degree > 15) {
 
-    } if (degree <= 25 && degree > 20){
+    }
+    if (degree <= 25 && degree > 20) {
 
     } else {
 

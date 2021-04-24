@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>BestWeather</title>
+    <link rel="icon" type="image/png" href="img/weatherIcon.png">
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -60,6 +61,7 @@
                     Current location:
                 </div>
                 <div class="place fw-bold d-inline-block my-2 mx-2" id="currentPlace">
+                    unknown
                 </div>
             </div>
             <div class="right-part col-0 col-xl-1 p-0"></div>
@@ -93,56 +95,64 @@
                      id="time0" style="height: 220px; background-color: #4a868e;">
                     <div class="mx-auto fs-5 my-auto fw-bold">00:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
                 <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
                      id="time3" style="height: 220px; background-color: #7badb4;">
                     <div class="mx-auto fs-5 my-auto fw-bold">03:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
                 <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
                      id="time6" style="height: 220px; background-color: #a3cdd3;">
                     <div class="mx-auto fs-5 my-auto fw-bold">06:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
                 <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
                      id="time9" style="height: 220px; background-color: #caedf2;">
                     <div class="mx-auto fs-5 my-auto fw-bold">09:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
                 <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
                      id="time12" style="height: 220px; background-color: #a3cdd3;">
                     <div class="mx-auto fs-5 my-auto fw-bold">12:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
                 <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
                      id="time15" style="height: 220px; background-color: #7badb4;">
                     <div class="mx-auto fs-5 my-auto fw-bold">15:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
                 <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
                      id="time18" style="height: 220px; background-color: #4a868e;">
                     <div class="mx-auto fs-5 my-auto fw-bold">18:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
                 <div class="one-weather-item shadow flex-fill m-2 text-center d-flex flex-column"
                      id="time21" style="height: 220px; background-color: #4a868e;">
                     <div class="mx-auto fs-5 my-auto fw-bold">21:00</div>
                     <img class="img_cond" src="img/sun.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
-                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px"></div>
+                    <div class="wind"><img src="img/wind.svg" class="mx-auto my-auto" style="width: 50px; height: 50px">
+                    </div>
                     <div class="temp mx-auto fs-5 my-auto"></div>
                 </div>
             </div>
@@ -159,10 +169,10 @@
                      style="width: 90%; height: 80px">For her
                 </div>
                 <div class="clothes-box-girl mx-auto d-flex flex-wrap justify-content-between" style="width: 80%">
-                    <img class="item_cloth" src="img/hat%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
-                    <img class="item_cloth" src="img/jeans%20M1.1.jpg" class="mb-2 rounded-3" style="width:150px;">
-                    <img class="item_cloth" src="img/shirt%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
-                    <img class="item_cloth" src="img/shoes%20M1.3.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_hat_F" class="item_cloth" src="img/hat%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_top_F" class="item_cloth" src="img/jeans%20M1.1.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_bottom_F" class="item_cloth" src="img/shirt%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_shoes_F" class="item_cloth" src="img/shoes%20M1.3.jpg" class="mb-2 rounded-3" style="width:150px;">
                 </div>
             </div>
         </div>
@@ -172,10 +182,10 @@
                      style="width: 90%; height: 80px">For him
                 </div>
                 <div class="clothes-box-boy mx-auto d-flex flex-wrap justify-content-between" style="width: 80%">
-                    <img class="item_cloth" src="img/hat%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
-                    <img class="item_cloth" src="img/jeans%20M1.1.jpg" class="mb-2 rounded-3" style="width:150px;">
-                    <img class="item_cloth" src="img/shirt%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
-                    <img class="item_cloth" src="img/shoes%20M1.3.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_hat_M" class="item_cloth" src="img/hat%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_top_M" class="item_cloth" src="img/jeans%20M1.1.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_bottom_M" class="item_cloth" src="img/shirt%20M1.2.jpg" class="mb-2 rounded-3" style="width:150px;">
+                    <img id="item_cloth_shoes_M" class="item_cloth" src="img/shoes%20M1.3.jpg" class="mb-2 rounded-3" style="width:150px;">
                 </div>
             </div>
         </div>

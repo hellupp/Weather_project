@@ -54,6 +54,8 @@ function fillForecast(lat, lng) {
             // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
             $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
             $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+            // $("#time" + (8 - modIter + i) * 3).find(".img_cond").style.width = 120px;
+            // $("#time" + (8 - modIter + i) * 3).find(".img_cond").style.heigth = 120px;
             console.log("This: " + i)
         }
     });

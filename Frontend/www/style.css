@@ -51,7 +51,8 @@ body {
 }
 
 .cur-loc {
-    color: #465B6F;;
+    color: #465B6F;
+    vertical-align: top;
 }
 
 .place {

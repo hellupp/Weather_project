@@ -146,7 +146,7 @@ function fillForecastForFarengheight(lat, lng) {
             $("#today-forecast").find(".temp").html(Math.round(dataD["daily"][0]["temp"]["day"]) + "°F");
             $("#today-forecast").find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (dataD["daily"][0]["weather"][0]["icon"]) + '@2x.png');
             $('.img_cond').show();
-            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' + (dataD["daily"][0]["wind_speed"]) + "m/s");
+            $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' + (dataD["daily"][0]["wind_speed"]) + "mph");
             $('.wind').show();
 
             suggestOutlook((Math.round(dataD["daily"][0]["temp"]["day"])-32)/1.8);
@@ -164,7 +164,7 @@ function fillForecastForFarengheight(lat, lng) {
         for (var i = 0; i < modIter; i++) {
             $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°F");
             // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "mph");
             $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
         }

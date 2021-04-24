@@ -139,7 +139,7 @@ body {
   }
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 620px){
   #currentPlace {
     width: 400px;
     white-space: nowrap;
@@ -148,10 +148,11 @@ body {
   }
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 820px){
   #currentPlace {
-    width: 800px;
+    width: 600px;
     white-space: nowrap;
-    overflow: visible;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

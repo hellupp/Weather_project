@@ -149,14 +149,14 @@ function fillForecastForFarengheight(lat, lng) {
             $("#today-forecast").find(".wind").html('<img src="img/wind.svg" alt="">' + '<br>' + (dataD["daily"][0]["wind_speed"]) + "m/s");
             $('.wind').show();
 
-            suggestOutlook(Math.round(dataD["daily"][0]["temp"]["day"]));
+            suggestOutlook((Math.round(dataD["daily"][0]["temp"]["day"])-32)/1.8);
 
             console.log(dayOfWeek + numberOfDate + Month);
             console.log("Date: " + date.toString());
         });
 
         modIter = globalIter % 8;
-        if (globalIter == 40)
+        if (globalIter === 40)
             modIter = 8;
 
         globalIter = defineIter(new Date().getHours());
@@ -265,13 +265,13 @@ function initMap() {
                     });
                     if(celsii === true){
                         latD = pos.lat;
-                        lngD = pos.lat;
+                        lngD = pos.lng;
                         fillForecastForCelsii(pos.lat, pos.lng);
                     }
 
                     else{
                         latD = pos.lat;
-                        lngD = pos.lat;
+                        lngD = pos.lng;
                         fillForecastForFarengheight(pos.lat, pos.lng);
                     }
                 },
@@ -318,13 +318,13 @@ function initMap() {
 
                     if(celsii === true){
                         latD = pos.lat;
-                        lngD = pos.lat;
+                        lngD = pos.lng;
                         fillForecastForCelsii(pos.lat, pos.lng);
                     }
 
                     else{
                         latD = pos.lat;
-                        lngD = pos.lat;
+                        lngD = pos.lng;
                         fillForecastForFarengheight(pos.lat, pos.lng);
                     }
                 },
@@ -385,7 +385,7 @@ function initMap() {
 
             else{
                 latD = lat;
-                lngD = lat;
+                lngD = lng;
                 fillForecastForFarengheight(lat, lng);
             }
 
@@ -429,7 +429,7 @@ function initMap() {
 
                 else{
                     latD = lat;
-                    lngD = lat;
+                    lngD = lng;
                     fillForecastForFarengheight(lat, lng);
                 }
 

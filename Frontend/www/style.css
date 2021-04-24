@@ -1,5 +1,6 @@
 .upper-header, .lower-header {
   background-color: #CEEFF3;
+  box-sizing: border-box;
 }
 
 .name {

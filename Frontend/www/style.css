@@ -140,6 +140,10 @@ body {
     font-family: Lucida Handwriting;
 }
 
+input {
+    border-radius: 20px 0px 0px 20px !important;
+}
+
 input:focus {
     outline: none !important;
 }

@@ -1,11 +1,11 @@
 let autocomplete;
-let apiKey = "eefe7d57de8f5f2e9189fc0ee2bae964";
+let apiKeyForWeather = "eefe7d57de8f5f2e9189fc0ee2bae964";
 
 let map;
 var globalDate;
 var globalData;
 var globalIter;
-var modIter;
+var iter;
 
 var celsii = true;
 var latD;
@@ -15,18 +15,6 @@ $('.img_cond').hide();
 $('.wind').hide();
 $('.item_cloth').hide();
 
-
-// var yourbuttons = document.getElementsByClassName('degree-buttons');
-// for (var i = yourbuttons.length - 1; i >= 0; i--) {
-//     var currentbtn;
-//     yourbuttons[i].onclick=function(){
-//         if(currentbtn){
-//             currentbtn.classList.remove("active");
-//         }
-//         this.classList.add("active");
-//         currentbtn=this;
-//     }
-// };
 
 $("#farengheight").on('click', function(e) {
     $("#celsii").removeClass("active");
@@ -62,14 +50,14 @@ function fillForecastForCelsii(lat, lng) {
     var curentDate = new Date();
     console.log(new Date());
     console.log(curentDate.getHours());
-    globalIter = defineIter(curentDate.getHours());
+    globalIter = defineWhatHoursShow(curentDate.getHours());
     console.log(globalIter);
 
-    $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalIter + '&units=metric&appid=' + apiKey, function (data) {
+    $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalIter + '&units=metric&appid=' + apiKeyForWeather, function (data) {
 
-        modIter = globalIter % 8;
+        iter = globalIter % 8;
         if (globalIter === 40)
-            modIter = 8;
+            iter = 8;
 
         globalData = data;
 
@@ -77,7 +65,7 @@ function fillForecastForCelsii(lat, lng) {
         if (curentDate.getHours() >= 21)
             k = 1;
 
-        $.getJSON('http://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=minutely,hourly,current&units=metric&appid=' + apiKey, function (dataD) {
+        $.getJSON('http://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=minutely,hourly,current&units=metric&appid=' + apiKeyForWeather, function (dataD) {
             var date = new Date((dataD["daily"][0]["dt"]) * 1000);
 
             const tempSplit = date.toString().split(" ", 4);
@@ -98,17 +86,17 @@ function fillForecastForCelsii(lat, lng) {
             console.log("Date: " + date.toString());
         });
 
-        modIter = globalIter % 8;
+        iter = globalIter % 8;
         if (globalIter == 40)
-            modIter = 8;
+            iter = 8;
 
-        globalIter = defineIter(new Date().getHours());
+        globalIter = defineWhatHoursShow(new Date().getHours());
 
-        for (var i = 0; i < modIter; i++) {
-            $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°C");
+        for (var i = 0; i < iter; i++) {
+            $("#time" + (8 - iter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°C");
             // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
-            $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+            $("#time" + (8 - iter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "m/s");
+            $("#time" + (8 - iter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
         }
     });
@@ -119,14 +107,14 @@ function fillForecastForFarengheight(lat, lng) {
     var curentDate = new Date();
     console.log(new Date());
     console.log(curentDate.getHours());
-    globalIter = defineIter(curentDate.getHours());
+    globalIter = defineWhatHoursShow(curentDate.getHours());
     console.log(globalIter);
 
-    $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalIter + '&units=imperial&appid=' + apiKey, function (data) {
+    $.getJSON('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&cnt=' + globalIter + '&units=imperial&appid=' + apiKeyForWeather, function (data) {
 
-        modIter = globalIter % 8;
+        iter = globalIter % 8;
         if (globalIter === 40)
-            modIter = 8;
+            iter = 8;
 
         globalData = data;
 
@@ -134,7 +122,7 @@ function fillForecastForFarengheight(lat, lng) {
         if (curentDate.getHours() >= 21)
             k = 1;
 
-        $.getJSON('http://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=minutely,hourly,current&units=imperial&appid=' + apiKey, function (dataD) {
+        $.getJSON('http://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=minutely,hourly,current&units=imperial&appid=' + apiKeyForWeather, function (dataD) {
             var date = new Date((dataD["daily"][0]["dt"]) * 1000);
 
             const tempSplit = date.toString().split(" ", 4);
@@ -155,24 +143,24 @@ function fillForecastForFarengheight(lat, lng) {
             console.log("Date: " + date.toString());
         });
 
-        modIter = globalIter % 8;
+        iter = globalIter % 8;
         if (globalIter === 40)
-            modIter = 8;
+            iter = 8;
 
-        globalIter = defineIter(new Date().getHours());
+        globalIter = defineWhatHoursShow(new Date().getHours());
 
-        for (var i = 0; i < modIter; i++) {
-            $("#time" + (8 - modIter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°F");
+        for (var i = 0; i < iter; i++) {
+            $("#time" + (8 - iter + i) * 3).find(".temp").html(Math.round(globalData["list"][i]["main"]["temp"]) + "°F");
             // $("#time" + (8 - modIter + i) * 3).find(".pop").html("<img  src='images/icon-umberella.png' width=25>" + +Math.round(100 * (globalData["list"][i]["pop"])) + "%");
-            $("#time" + (8 - modIter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "mph");
-            $("#time" + (8 - modIter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
+            $("#time" + (8 - iter + i) * 3).find(".wind").html('<img src="img/wind.svg" style="width: 45px; height: 45px" alt="">' + (globalData["list"][i]["wind"]["speed"]) + "mph");
+            $("#time" + (8 - iter + i) * 3).find(".img_cond").attr("src", 'http://openweathermap.org/img/wn/' + (globalData["list"][i]["weather"]["0"]["icon"]) + '@2x.png');
             console.log("This: " + i)
         }
     });
 }
 
 
-function defineIter(hours) {
+function defineWhatHoursShow(hours) {
     if (hours < 3) {
         document.getElementById("time0").classList.add('d-none');
         return 39;
@@ -347,9 +335,9 @@ function initMap() {
         }
     );
     places = new google.maps.places.PlacesService(map);
-    autocomplete.addListener("place_changed", onPlaceChanged);
+    autocomplete.addListener("place_changed", whenPlaceChanged);
 
-    document.getElementById("input_address").addEventListener("change", onPlaceChanged);
+    document.getElementById("input_address").addEventListener("change", whenPlaceChanged);
 
     var homeMarker = new google.maps.Marker({
         position: startPoint,
@@ -357,7 +345,7 @@ function initMap() {
     });
     homeMarker.setVisible(false);
 
-    function onPlaceChanged() {
+    function whenPlaceChanged() {
         const place = autocomplete.getPlace();
         homeMarker.setPosition(place.geometry.location);
         homeMarker.setVisible(true);
